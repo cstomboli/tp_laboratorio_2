@@ -25,12 +25,12 @@ namespace Entidades
             {
                 if (int.Parse(binario.Substring(i, 1)) == 1)
                 {
-                    num_decimal = num_decimal + int.Parse(System.Math.Pow(2, double.Parse(exponente.ToString())).ToString());
+                    num_decimal += int.Parse(System.Math.Pow(2, double.Parse(exponente.ToString())).ToString());
                 }
                 exponente--;
             }
-            
-            return num_decimal.ToString();
+             
+            return Convert.ToString(num_decimal);
         }
 
         public string DecimalBinario(double numero)
