@@ -18,19 +18,38 @@ namespace Entidades
 
         public string BinarioDecimal (string binario)
         {
+            /*
+            if (binario != "" && binario[0] != '-')
+            {
+                try
+                {
+                    return Convert.ToInt64(binario, 2).ToString();
+                }
+                catch (System.FormatException) //Lanza esta excepción si el texto no está en formato binario
+                {
+                    return "Valor invalido."; //Si salta la excepción, se devuelve "Valor invalido.".
+                }
+            }
+            return "Valor invalido."; //Si el numero esta vacio o es negativo, devuelve "Valor invalido.".
+            */
+            
+            string retorno = "valor invalido";
             int exponente = binario.Length - 1;
             int num_decimal = 0;
 
             for (int i = 0; i < binario.Length; i++)
             {
+
                 if (int.Parse(binario.Substring(i, 1)) == 1)
                 {
                     num_decimal += int.Parse(System.Math.Pow(2, double.Parse(exponente.ToString())).ToString());
                 }
                 exponente--;
             }
-             
-            return Convert.ToString(num_decimal);
+
+            retorno = Convert.ToInt32(num_decimal).ToString();
+            return retorno;
+           
         }
 
         public string DecimalBinario(double numero)
