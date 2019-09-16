@@ -59,7 +59,7 @@ namespace MiCalculadora
         /// <param name="numero1">Recibe el primer numero</param>
         /// <param name="numero2">Recibe el segundo numero</param>
         /// <param name="operador">Recibe el simbolo, cuenta a realizar</param>
-        /// <returns></returns>
+        /// <returns>Resultado</returns>
         public static double Operar(string numero1,string numero2, string operador)
         {
             Numero numeroAux = new Numero(numero1);
