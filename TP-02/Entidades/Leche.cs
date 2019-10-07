@@ -54,7 +54,10 @@ namespace Entidades_2018
             }
         }
 
-
+        /// <summary>
+        /// Sobrecarga del Metodo Mostar.
+        /// </summary>
+        /// <returns>String del tipo de leche y sus calorias.</returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
