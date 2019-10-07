@@ -19,10 +19,18 @@ namespace Entidades_2018
         }
 
         #region "Constructores"
+        /// <summary>
+        /// Instancio la Lista de productos.
+        /// </summary>
         private Changuito()
         {
             this.productos = new List<Producto>();
         }
+
+        /// <summary>
+        /// Instancio el atributo que recibe por parametro.
+        /// </summary>
+        /// <param name="espacioDisponible"></param>
         public Changuito(int espacioDisponible) : this()
         {
             this.espacioDisponible = espacioDisponible;
@@ -33,7 +41,7 @@ namespace Entidades_2018
         /// <summary>
         /// Muestro el Changuito y TODOS los Productos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>los productos</returns>
         public override string ToString()
         {
             return Changuito.Mostrar(this, ETipo.Todos);
@@ -41,7 +49,6 @@ namespace Entidades_2018
         #endregion
 
         #region "Métodos"
-
         /// <summary>
         /// Expone los datos del elemento y su lista (incluidas sus herencias)
         /// SOLO del tipo requerido
@@ -84,7 +91,7 @@ namespace Entidades_2018
         /// </summary>
         /// <param name="c">Objeto donde se agregará el elemento</param>
         /// <param name="p">Objeto a agregar</param>
-        /// <returns></returns>
+        /// <returns>El objeto a agregar</returns>
         public static Changuito operator +(Changuito c, Producto p)
         {
             foreach (Producto v in c.productos)
@@ -104,7 +111,7 @@ namespace Entidades_2018
         /// </summary>
         /// <param name="c">Objeto donde se quitará el elemento</param>
         /// <param name="p">Objeto a quitar</param>
-        /// <returns></returns>
+        /// <returns>Objeto a quitar</returns>
         public static Changuito operator -(Changuito c, Producto p)
         {
             foreach (Producto v in c.productos)
