@@ -9,6 +9,12 @@ namespace Entidades_2018
     public class Dulce : Producto
     {
         #region "Constructor"
+        /// <summary>
+        /// Instancia los atributos que recibe por parametro.
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="codigoDeBarras"></param>
+        /// <param name="color"></param>
         public Dulce(EMarca marca, string codigoDeBarras, ConsoleColor color) : base(marca, codigoDeBarras, color)
         {
 
@@ -28,9 +34,9 @@ namespace Entidades_2018
         }
 
         /// <summary>
-        /// 
+        /// Sobrecarga del metodo Mostar
         /// </summary>
-        /// <returns></returns>
+        /// <returns>string de cantidad de calorias</returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
