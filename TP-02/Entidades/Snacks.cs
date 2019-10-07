@@ -36,9 +36,9 @@ namespace Entidades_2018
         }
 
         /// <summary>
-        /// 
+        /// sobrecarga del Metodo Mostrar
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Un snack y sus calorias.</returns>
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
