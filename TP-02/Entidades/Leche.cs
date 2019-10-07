@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 
-namespace Entidades
+namespace Entidades_2018
 {
     public class Leche : Producto
     {
@@ -16,6 +16,7 @@ namespace Entidades
         }
         private ETipo tipo; // ver cuando llama al segundo constructor q pasa con el tipo.
 
+        #region "Contructores"
         /// <summary>
         /// Por defecto, TIPO será ENTERA
         /// </summary>
@@ -39,7 +40,9 @@ namespace Entidades
         {
             this.tipo = tipo;
         }
+        #endregion
 
+        #region "Sobrecargas"
         /// <summary>
         /// Las leches tienen 20 calorías
         /// </summary>
@@ -50,6 +53,7 @@ namespace Entidades
                 return 20;                             // this.CantidadCalorias=20; se escribe asi si hay set, pero no hay set!!
             }
         }
+
 
         public override sealed string Mostrar()
         {
@@ -64,5 +68,6 @@ namespace Entidades
 
             return sb.ToString();
         }
+        #endregion
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 #pragma warning disable
 
 
-namespace Entidades
+namespace Entidades_2018
 {
     /// <summary>
     /// La clase Producto no deberá permitir que se instancien elementos de este tipo.
@@ -22,6 +22,7 @@ namespace Entidades
         protected string codigoDeBarras;
         protected ConsoleColor colorPrimarioEmpaque;
 
+        #region "Metodos"
         /// <summary>
         /// ReadOnly: Retornará la cantidad de calorias
         /// </summary>
@@ -56,7 +57,9 @@ namespace Entidades
 
             return sb.ToString();
         }
+        #endregion
 
+        #region "Operadores"
         /// <summary>
         /// Compara si dos prodcutos son iguales, si comparten el mismo código de barras
         /// </summary>
@@ -77,9 +80,11 @@ namespace Entidades
         {
             return !(v1 == v2);
         }
+        #endregion
 
+        #region "Constructor"
         /// <summary>
-        /// 
+        /// Instancio los atributos que recibe por parametro.
         /// </summary>
         /// <param name="marca"></param>
         /// <param name="codigoDeBarras"></param>
@@ -90,5 +95,6 @@ namespace Entidades
             this.codigoDeBarras = codigoDeBarras;
             this.colorPrimarioEmpaque = colorPrimarioEmpaque;
         }
+        #endregion
     }
 }

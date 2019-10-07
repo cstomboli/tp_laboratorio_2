@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades_2018
 {
     public class Dulce : Producto
     {
+        #region "Constructor"
         public Dulce(EMarca marca, string codigoDeBarras, ConsoleColor color) : base(marca, codigoDeBarras, color)
         {
 
         }
+        #endregion
 
+        #region "Sobrecargas"
         /// <summary>
         /// Los dulces tienen 80 calorías
         /// </summary>
@@ -24,6 +27,10 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
@@ -36,5 +43,6 @@ namespace Entidades
 
             return sb.ToString();
         }
+        #endregion 
     }
 }

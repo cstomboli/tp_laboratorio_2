@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades_2018
 {
     /// <summary>
     /// No podrá tener clases heredadas.
