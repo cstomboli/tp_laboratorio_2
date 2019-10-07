@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entidades_2018;
 
 namespace TP_02
-{//soy este
+{
     class Program
     {
         static void Main(string[] args)
