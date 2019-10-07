@@ -112,7 +112,6 @@ namespace Entidades_2018
             {
                 c.productos.Add(p);
             }
-
             return c;
         }
         /// <summary>
@@ -131,7 +130,6 @@ namespace Entidades_2018
                     break;
                 }
             }
-
             return c;
         }
         #endregion
