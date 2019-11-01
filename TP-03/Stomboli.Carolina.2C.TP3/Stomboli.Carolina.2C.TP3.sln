@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stomboli.Carolina.2C.TP3", "Stomboli.Carolina.2C.TP3.csproj", "{AEED7DC6-9525-41B4-9F86-B11A1CAE3140}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases_Abstractas", "..\Clases_Abstractas\Clases_Abstractas.csproj", "{182B48AF-96E9-4A50-A382-410FB3C6D84F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AEED7DC6-9525-41B4-9F86-B11A1CAE3140}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEED7DC6-9525-41B4-9F86-B11A1CAE3140}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEED7DC6-9525-41B4-9F86-B11A1CAE3140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182B48AF-96E9-4A50-A382-410FB3C6D84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182B48AF-96E9-4A50-A382-410FB3C6D84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182B48AF-96E9-4A50-A382-410FB3C6D84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182B48AF-96E9-4A50-A382-410FB3C6D84F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
