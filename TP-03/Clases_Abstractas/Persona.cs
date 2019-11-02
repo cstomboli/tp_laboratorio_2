@@ -13,7 +13,7 @@ namespace Clases_Abstractas
         private ENacionalidad nacionalidad; 
         private string nombre;
 
-        enum ENacionalidad
+        public enum ENacionalidad
         {
             Argentino,
             Extranjero
