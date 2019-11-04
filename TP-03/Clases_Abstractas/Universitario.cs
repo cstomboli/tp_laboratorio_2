@@ -4,35 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clases_Abstractas
+namespace EntidadesAbstractas
 {
     public abstract class Universitario : Persona
     {
         private int legajo;
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
+            bool retorno = false;
 
+            if(obj is Universitario)
+            {
+                retorno = true;
+            }
+            return retorno;
         }
 
-        protected string MostrarDatos() //* es protected?
+        protected virtual string MostrarDatos() 
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendFormat("Nombre: {^0}\n", this.legajo);
 
+            return sb.ToString();
         }
 
         public static bool operator ==(Universitario pg1, Universitario pg2)
         {
             bool retorno = false;
-            /*
-            foreach (Llamada call in c.listaDeLlamadas)
+            
+            if(pg1.Equals(pg2) && pg1.DNI == pg2.DNI || pg1.legajo == pg2.legajo)
             {
-                if (llamada == call)
-                {
-                    retorno = true;
-                    break;
-                }
+                retorno = true;               
             }
-            */
             return retorno;
         }
 
@@ -41,10 +46,7 @@ namespace Clases_Abstractas
             return !(pg1 == pg2);
         }
 
-        protected abstract string ParticiparEnClase()
-        {
-
-        }
+        protected abstract string ParticiparEnClase(); //es abstract       
 
         public Universitario()
         {
@@ -55,6 +57,6 @@ namespace Clases_Abstractas
         {
 
         }
-
+            
     }
 }

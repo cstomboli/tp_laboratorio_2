@@ -1,0 +1,2 @@
+C:\Users\María del Carmen\Desktop\tp n2\tp_laboratorio_2\TP-03\Stomboli.Carolina.2C.TP3\obj\Debug\Stomboli.Carolina.2C.TP3.csprojAssemblyReference.cache
+C:\Users\María del Carmen\Desktop\tp n2\tp_laboratorio_2\TP-03\Stomboli.Carolina.2C.TP3\obj\Debug\Stomboli.Carolina.2C.TP3.csproj.CoreCompileInputs.cache
