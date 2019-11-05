@@ -14,7 +14,7 @@ namespace Exepciones
             
         }
 
-        public NacionalidadInvalidaExeption() : this ("Dni invalido")
+        public NacionalidadInvalidaExeption() : this ("El Dni no esta entre los parametros establecidos.")
         {
             
         }

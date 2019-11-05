@@ -7,7 +7,7 @@ using Exepciones;
 
 namespace EntidadesAbstractas
 {
-    public class Persona // es abstract
+    public abstract class Persona // es abstract
     {
         private string apellido;
         private int dni;
@@ -48,7 +48,7 @@ namespace EntidadesAbstractas
                 }
                 catch (NacionalidadInvalidaExeption e)
                 {
-
+                    Console.WriteLine(e.Message);
                 }
                 
             }
@@ -76,7 +76,7 @@ namespace EntidadesAbstractas
                 }
                 catch (DniInvalidoExeptionn e)
                 {
-
+                    Console.WriteLine(e.Message);
                 }
             }           
         }
@@ -92,51 +92,48 @@ namespace EntidadesAbstractas
 
         public Persona (string nombre, string apellido, ENacionalidad nacionalidad)
         {
-
+            this.nombre = nombre;       //esto va aca??, pero no se como carga, xq no me entraba a las propiedades.
+            this.apellido = apellido;
+            this.nacionalidad = nacionalidad;
         }
 
-        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad)
+        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad):this(nombre, apellido, nacionalidad)
         {
-
+            this.dni = dni;
         }
 
-        public Persona(string nombre, string apellido,string dni, ENacionalidad nacionalidad)
+        public Persona(string nombre, string apellido,string dni, ENacionalidad nacionalidad) : this(nombre, apellido, nacionalidad)
         {
+           
 
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Nombre: {^0}\n", this.Nombre);
-            sb.AppendFormat("Nombre: {^0}\n", this.Appelido);
-            sb.AppendFormat("Nombre: {^0}\n", this.DNI);
-            sb.AppendFormat("Nombre: {^0}\n", this.nacionalidad);
+            sb.AppendFormat("Nombre: {0}\n", this.Nombre);
+            sb.AppendFormat("Apellido: {0}\n", this.Appelido);
+            sb.AppendFormat("Dni: {0}\n", this.DNI);
+            sb.AppendFormat("Nacionalidad: {0}\n", this.nacionalidad);
 
             return sb.ToString();
         }
 
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {          
-            try
+            
+            if (dato > 0 && dato <= 89999999)
             {
-                if (dato > 0 && dato <= 89999999)
-                {
-                    nacionalidad = ENacionalidad.Argentino;
-                }
-                else if (dato > 89999999 && dato <= 99999999)
-                {
-                    nacionalidad = ENacionalidad.Extranjero;
-                }
-                else
-                {
-                    throw new NacionalidadInvalidaExeption();
-                }
+                nacionalidad = ENacionalidad.Argentino;
             }
-            catch (NacionalidadInvalidaExeption e)
+            else if (dato > 89999999 && dato <= 99999999)
             {
-                //e.Message();
+                nacionalidad = ENacionalidad.Extranjero;
             }
+            else
+            {
+                throw new NacionalidadInvalidaExeption();
+            }            
             return dato;
         }
 

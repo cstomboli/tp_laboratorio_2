@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntidadesAbstractas", "..\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exepciones", "..\Exepciones\Exepciones.csproj", "{AA43521B-E8B5-400B-B3A9-1F9C3F1FF142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClasesInstanciables", "..\ClasesInstanciables\ClasesInstanciables.csproj", "{E9FE147C-B21E-4B7F-9FB1-CA8B4341D834}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archivos", "..\Archivos\Archivos.csproj", "{5193C7F2-4060-4AF7-89B9-DDB97DBD1580}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AA43521B-E8B5-400B-B3A9-1F9C3F1FF142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA43521B-E8B5-400B-B3A9-1F9C3F1FF142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA43521B-E8B5-400B-B3A9-1F9C3F1FF142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9FE147C-B21E-4B7F-9FB1-CA8B4341D834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9FE147C-B21E-4B7F-9FB1-CA8B4341D834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9FE147C-B21E-4B7F-9FB1-CA8B4341D834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9FE147C-B21E-4B7F-9FB1-CA8B4341D834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5193C7F2-4060-4AF7-89B9-DDB97DBD1580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5193C7F2-4060-4AF7-89B9-DDB97DBD1580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5193C7F2-4060-4AF7-89B9-DDB97DBD1580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5193C7F2-4060-4AF7-89B9-DDB97DBD1580}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

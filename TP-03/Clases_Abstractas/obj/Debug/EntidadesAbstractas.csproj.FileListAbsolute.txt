@@ -1,0 +1,9 @@
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\bin\Debug\Clases_Abstractas.dll
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\bin\Debug\Clases_Abstractas.pdb
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\bin\Debug\Exepciones.dll
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\bin\Debug\Exepciones.pdb
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\obj\Debug\EntidadesAbstractas.csprojAssemblyReference.cache
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\obj\Debug\EntidadesAbstractas.csproj.CoreCompileInputs.cache
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\obj\Debug\EntidadesAbstractas.csproj.CopyComplete
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\obj\Debug\Clases_Abstractas.dll
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\Clases_Abstractas\obj\Debug\Clases_Abstractas.pdb

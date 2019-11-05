@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AEED7DC6-9525-41B4-9F86-B11A1CAE3140}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Stomboli.Carolina._2C.TP3</RootNamespace>
-    <AssemblyName>Stomboli.Carolina.2C.TP3</AssemblyName>
+    <ProjectGuid>{5193C7F2-4060-4AF7-89B9-DDB97DBD1580}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Archivos</RootNamespace>
+    <AssemblyName>Archivos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="GenericoInterfaz.cs" />
+    <Compile Include="Texto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Clases_Abstractas\EntidadesAbstractas.csproj">
-      <Project>{182b48af-96e9-4a50-a382-410fb3c6d84f}</Project>
-      <Name>EntidadesAbstractas</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Exepciones\Exepciones.csproj">
-      <Project>{aa43521b-e8b5-400b-b3a9-1f9c3f1ff142}</Project>
-      <Name>Exepciones</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

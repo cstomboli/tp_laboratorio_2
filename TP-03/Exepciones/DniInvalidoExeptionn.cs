@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exepciones
+namespace Exepciones 
 {
-    public class DniInvalidoExeptionn : Exception
+    public class DniInvalidoExeptionn : Exception //Dudas en esta clase
     {
         public DniInvalidoExeptionn ()
         {
@@ -20,11 +20,12 @@ namespace Exepciones
 
         public DniInvalidoExeptionn(string mensaje)
         {
-            mensaje = "Dni Incorrecto";
+            
         }
 
-        public DniInvalidoExeptionn(string mensaje, Exception e)
+        public DniInvalidoExeptionn(string mensaje, Exception e) : this("Dni con error de formato.")
         {
+            
 
         }
     }

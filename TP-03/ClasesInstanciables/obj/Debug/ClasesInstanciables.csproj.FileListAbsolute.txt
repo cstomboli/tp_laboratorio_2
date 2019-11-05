@@ -1,0 +1,2 @@
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\ClasesInstanciables\obj\Debug\ClasesInstanciables.csprojAssemblyReference.cache
+C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\ClasesInstanciables\obj\Debug\ClasesInstanciables.csproj.CoreCompileInputs.cache
