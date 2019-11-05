@@ -25,7 +25,7 @@ namespace EntidadesAbstractas
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendFormat("Nombre: {0}\n", this.legajo);
+            sb.AppendFormat("Legajo: {0}\n", this.legajo);
 
             return sb.ToString();
         }
@@ -34,7 +34,7 @@ namespace EntidadesAbstractas
         {
             bool retorno = false;
             
-            if(pg1.Equals(pg2) && pg1.DNI == pg2.DNI || pg1.legajo == pg2.legajo)
+            if(pg1.Equals(pg2) && (pg1.DNI == pg2.DNI || pg1.legajo == pg2.legajo)) //Va ese parentesis?
             {
                 retorno = true;               
             }
@@ -46,7 +46,7 @@ namespace EntidadesAbstractas
             return !(pg1 == pg2);
         }
 
-        protected abstract string ParticiparEnClase(); //es abstract       
+        protected abstract string ParticiparEnClase();     
 
         public Universitario()
         {
@@ -55,7 +55,7 @@ namespace EntidadesAbstractas
 
         public Universitario(int legajo, string nombre, string apellido, string dni, ENacionalidad nacionalidad) :base(nombre, apellido, dni, nacionalidad)
         {
-
+            //this.legajo=legajo;
         }
             
     }

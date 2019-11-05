@@ -9,10 +9,10 @@ namespace EntidadesAbstractas
 {
     public abstract class Persona // es abstract
     {
+        private string nombre;
         private string apellido;
         private int dni;
-        private ENacionalidad nacionalidad; 
-        private string nombre;
+        private ENacionalidad nacionalidad;         
 
         public enum ENacionalidad
         {
@@ -52,7 +52,20 @@ namespace EntidadesAbstractas
                 }
                 
             }
-        }        
+        }
+
+        public ENacionalidad Nacionalidad
+        {
+            get
+            {
+                return nacionalidad;
+            }
+            set
+            {
+               nacionalidad = value; //ValidarDni(value, this.dni); // Sin this?
+            }
+
+        }
 
         public string Nombre
         {
@@ -61,7 +74,8 @@ namespace EntidadesAbstractas
                return nombre ;
             }
             set
-            {
+            {   
+                ///Hacer o no un if que diga que si nombre es distinto de null?
                 this.nombre= ValidarNombreApellido(value);
             }
         }
@@ -114,14 +128,14 @@ namespace EntidadesAbstractas
             sb.AppendFormat("Nombre: {0}\n", this.Nombre);
             sb.AppendFormat("Apellido: {0}\n", this.Appelido);
             sb.AppendFormat("Dni: {0}\n", this.DNI);
-            sb.AppendFormat("Nacionalidad: {0}\n", this.nacionalidad);
+            sb.AppendFormat("Nacionalidad: {0}\n", this.Nacionalidad);
 
             return sb.ToString();
         }
 
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
-        {          
-            
+        {
+             
             if (dato > 0 && dato <= 89999999)
             {
                 nacionalidad = ENacionalidad.Argentino;
@@ -139,7 +153,7 @@ namespace EntidadesAbstractas
 
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {        
-            if(int.TryParse(dato, out dni)) //Si es número correcto retornará true y saldrá
+            if(int.TryParse(dato, out dni) &&  dato.Length < 8) //Si es número correcto retornará true y saldrá
             {
                return ValidarDni(nacionalidad, Convert.ToInt32(dato));
             }
@@ -152,18 +166,15 @@ namespace EntidadesAbstractas
 
         private string ValidarNombreApellido(string dato)
         {
-            //int cantidad = dato.Length;
-
+            int cantidad = dato.Length;
             for (int i = 0; dato[i]  != '\0'; i++)
             {
-
                 if ((dato[i] > 'Z' || dato[i] < 'A') && (dato[i] > 'z' || dato[i] < 'a') && dato[i] != ' ')
                 {
                     //false
                     //Console.WriteLine("Dato erroneo");
                     dato = null;
-                }
-                
+                }                
             }
             return dato;
         }

@@ -27,7 +27,9 @@ namespace ClasesInstanciables
 
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad):base(id,nombre,apellido,dni,nacionalidad)
         {
-            this.clasesDelDia = new Queue<Universidad.EClases>();
+            this.clasesDelDia = new Queue<Universidad.EClases>(< Universidad.EClases > clasesDelDia.Enqueue._ramdomClases());
+            clasesDelDia.Enqueue._ramdomClases();
+           // clasesDelDia.Enqueue(_ramdomClases()); RANDOM CLASES DEVULVE VOID Y ME TIRA ERROR
         }
 
         private  void _ramdomClases() // Donde va el static de ramdon?
@@ -38,7 +40,7 @@ namespace ClasesInstanciables
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.ToString());                        
+            sb.AppendLine(base.ToString()); //Como muestro aca los datos del profesor?                       
 
             return sb.ToString();
         }
@@ -62,7 +64,7 @@ namespace ClasesInstanciables
         protected override string ParticiparEnClase()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Da la clase: {0}\n", this.clasesDelDia);
+            sb.AppendFormat("CLASES DEL DÍA: {0}\n", this.clasesDelDia);
             return sb.ToString();
         }
 

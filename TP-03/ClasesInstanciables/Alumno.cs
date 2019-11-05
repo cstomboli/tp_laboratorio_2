@@ -48,14 +48,16 @@ namespace ClasesInstanciables
         {
             bool retorno = false;
 
-            foreach()
-            {
-                if (a==clase && a.estadoCuenta != EEstadoCuenta.Deudor)
+            //foreach (clase in Universidad.EClases) //Universidad.EClases toma in clase)
+            //{
+                if (a==clase && (a.estadoCuenta != EEstadoCuenta.Deudor))
                 {
                     retorno = true;
                 }
-            }
+            //}
             return retorno;
+
+            
         }
 
         public static bool operator !=(Alumno a, Universidad.EClases clase)
