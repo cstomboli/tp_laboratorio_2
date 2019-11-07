@@ -57,7 +57,8 @@ namespace ClasesInstanciables
         {
             foreach(Alumno lista in j.alumnos)
             {
-                if (!(j == a))
+                //if (!(j == a))
+                if (!(lista == a))
                 {                    
                     j.Alumnos.Add(a); //asi?
                 }

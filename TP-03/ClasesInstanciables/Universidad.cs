@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Exepciones;
 
 namespace ClasesInstanciables
 {
@@ -91,7 +92,14 @@ namespace ClasesInstanciables
         }
         public static Profesor operator !=(Universidad u, EClases clase)
         {
-            return !(u == clase);
+            Profesor aux = null;
+
+            if(!(u == clase))
+            {
+
+            }
+
+            return aux;
         }
 
         public static Universidad operator +(Universidad g, EClases clase)
@@ -157,6 +165,10 @@ namespace ClasesInstanciables
                 if(lista==clase)
                 {
                     retorno= lista;
+                }
+                else
+                {
+                    throw new SinProfesorExeption();
                 }
             }
             return retorno;
