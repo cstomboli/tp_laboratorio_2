@@ -7,7 +7,7 @@ using Exepciones;
 
 namespace EntidadesAbstractas
 {
-    public abstract class Persona // es abstract
+    public abstract class Persona 
     {
         private string nombre;
         private string apellido;
@@ -22,7 +22,10 @@ namespace EntidadesAbstractas
 
         #region Propiedades
 
-        public string Appelido
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Apellido
         {
             get
             {
@@ -34,6 +37,9 @@ namespace EntidadesAbstractas
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int DNI
         {
             get
@@ -42,18 +48,13 @@ namespace EntidadesAbstractas
             }
             set
             {
-                try
-                {
-                    this.dni = ValidarDni(this.nacionalidad, value);
-                }
-                catch (NacionalidadInvalidaExeption e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                
+                this.dni = ValidarDni(this.nacionalidad, value);                  
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ENacionalidad Nacionalidad
         {
             get
@@ -62,11 +63,13 @@ namespace EntidadesAbstractas
             }
             set
             {
-               nacionalidad = value; //ValidarDni(value, this.dni); // Sin this?
+               this.nacionalidad = value; 
             }
-
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Nombre
         {
             get
@@ -75,23 +78,18 @@ namespace EntidadesAbstractas
             }
             set
             {   
-                ///Hacer o no un if que diga que si nombre es distinto de null?
                 this.nombre= ValidarNombreApellido(value);
             }
         }
 
-        public string stringToDni // DICE QUE DEVUELTE STRING, PERO LA FUNCION VALIDAR DNI Q RECIBE STRING DEVUELVE INT
+        /// <summary>
+        /// 
+        /// </summary>
+        public string stringToDni
         {
             set
             {
-                try
-                {
-                    this.dni = ValidarDni(this.nacionalidad, value);
-                }
-                catch (DniInvalidoExeptionn e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                this.dni = ValidarDni(this.nacionalidad, value);   
             }           
         }
 
@@ -99,73 +97,121 @@ namespace EntidadesAbstractas
 
         #region Métodos
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Persona ()
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="nacionalidad"></param>
         public Persona (string nombre, string apellido, ENacionalidad nacionalidad)
         {
-            this.nombre = nombre;       //esto va aca??, pero no se como carga, xq no me entraba a las propiedades.
-            this.apellido = apellido;
-            this.nacionalidad = nacionalidad;
+            this.Nombre = nombre;       
+            this.Apellido = apellido;
+            this.Nacionalidad = nacionalidad;
         }
 
-        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad):this(nombre, apellido, nacionalidad)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="dni"></param>
+        /// <param name="nacionalidad"></param>
+        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad) : this(nombre, apellido, nacionalidad)
         {
-            this.dni = dni;
+            this.DNI = dni;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="dni"></param>
+        /// <param name="nacionalidad"></param>
         public Persona(string nombre, string apellido,string dni, ENacionalidad nacionalidad) : this(nombre, apellido, nacionalidad)
         {
-           
-
+            this.stringToDni = dni;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Nombre: {0}\n", this.Nombre);
-            sb.AppendFormat("Apellido: {0}\n", this.Appelido);
-            sb.AppendFormat("Dni: {0}\n", this.DNI);
-            sb.AppendFormat("Nacionalidad: {0}\n", this.Nacionalidad);
-
+            sb.AppendFormat("NOMBRE COMPLETO: {0}, {1}\r\n", this.Apellido, this.Nombre);
+            sb.AppendFormat("NACIONALIDAD: {0}\r\n", this.Nacionalidad);
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nacionalidad"></param>
+        /// <param name="dato"></param>
+        /// <returns></returns>
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
              
-            if (dato > 0 && dato <= 89999999)
+            if ((dato > 0 && dato <= 89999999) && (nacionalidad == ENacionalidad.Argentino))
             {
-                nacionalidad = ENacionalidad.Argentino;
+                return dato;
             }
-            else if (dato > 89999999 && dato <= 99999999)
+            else if ((dato > 89999999 && dato <= 99999999) && (nacionalidad== ENacionalidad.Extranjero))
             {
-                nacionalidad = ENacionalidad.Extranjero;
+                return dato;
             }
             else
             {
                 throw new NacionalidadInvalidaExeption();
-            }            
-            return dato;
+            }          
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nacionalidad"></param>
+        /// <param name="dato"></param>
+        /// <returns></returns>
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {        
-            if(int.TryParse(dato, out dni) &&  dato.Length < 8) //Si es número correcto retornará true y saldrá
+            if(int.TryParse(dato, out int dni) &&  dato.Length <= 8) 
             {
-               return ValidarDni(nacionalidad, Convert.ToInt32(dato));
+               return ValidarDni(nacionalidad, dni);
             }
             else
             {
                 throw new DniInvalidoExeptionn();
             }                
-            //return  ValidarDni(nacionalidad, Convert.ToInt32(dato));  Yo queria hacer esto para reutilizar codigo, pero.            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dato"></param>
+        /// <returns></returns>
         private string ValidarNombreApellido(string dato)
         {
+            string retorno = string.Empty; //yo pondria null
+
+            foreach(char letra in dato)
+            {
+                if(char.IsLetter(letra))    // && (!char.IsWhiteSpace(letra))
+                {
+                    retorno= dato;
+                }                
+            }
+            /*
             int cantidad = dato.Length;
             for (int i = 0; dato[i]  != '\0'; i++)
             {
@@ -177,12 +223,11 @@ namespace EntidadesAbstractas
                 }                
             }
             return dato;
+            */
+            return retorno;
         }
 
         #endregion
-
-
-
 
     }
 }

@@ -9,12 +9,12 @@ namespace Exepciones
     public class NacionalidadInvalidaExeption : Exception
     {
         
-        public NacionalidadInvalidaExeption (string mensaje) 
+        public NacionalidadInvalidaExeption (string mensaje) :base(mensaje)
         {
             
         }
 
-        public NacionalidadInvalidaExeption() : this ("El Dni no esta entre los parametros establecidos.")
+        public NacionalidadInvalidaExeption() : this ("La Nacionalidad no se condice con el numero de DNI")
         {
             
         }

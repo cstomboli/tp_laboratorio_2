@@ -8,7 +8,7 @@ namespace Exepciones
 {
     public class ArchivosExeption : Exception
     {
-        public ArchivosExeption()
+        public ArchivosExeption(Exception InnerException) :base("Error en el archivo.", InnerException)
         {
 
         }

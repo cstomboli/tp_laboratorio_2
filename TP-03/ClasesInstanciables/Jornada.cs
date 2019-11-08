@@ -37,7 +37,7 @@ namespace ClasesInstanciables
             this.alumnos = new List<Alumno>();
         }
 
-        public Jornada(Universidad.EClases clase, Profesor instructor)
+        public Jornada(Universidad.EClases clase, Profesor instructor):this()
         {
             this.clase = clase;
             this.instructor = instructor;
@@ -56,11 +56,10 @@ namespace ClasesInstanciables
         public static Jornada operator +(Jornada j, Alumno a)
         {
             foreach(Alumno lista in j.alumnos)
-            {
-                //if (!(j == a))
-                if (!(lista == a))
+            {             
+                if (lista != a)
                 {                    
-                    j.Alumnos.Add(a); //asi?
+                    j.Alumnos.Add(a);
                 }
             }            
             return j;
@@ -70,23 +69,23 @@ namespace ClasesInstanciables
         {
             bool retorno = false;
 
-            foreach (Alumno alumno in j.alumnos )
+            if(!(a != j.clase)) //Reee reutilice codigo, con amor! ;)
             {
-                if(alumno==a)
-                {
-                    retorno = true;
-                }
-            }
+                retorno = true;
+            }         
             return retorno;
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Nombre: {0}\n", this.Alumnos);
-            sb.AppendFormat("Apellido: {0}\n", this.Clase);
-            sb.AppendFormat("Dni: {0}\n", this.Instructor);
-
+            sb.AppendLine("JORNADA: \r\n");            
+            sb.AppendFormat("CLASE DE: {0} POR  {1}\r\n\r\n", this.Clase, this.Instructor);
+            sb.AppendLine("ALUMNOS: \r\n");
+            foreach (Alumno student in this.Alumnos) 
+            {
+                sb.AppendFormat("{0}\r\n", student.ToString());
+            }                    
             return sb.ToString();
         }
     }

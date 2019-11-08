@@ -13,59 +13,87 @@ namespace ClasesInstanciables
         private Queue<Universidad.EClases> clasesDelDia; 
         private static Random random;
 
-        public Profesor()
+        #region Constructores
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Profesor() : base()
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         static Profesor()
-        {
-           
-            random = new Random(); // aca le tengo q dar valor
-            // Profesor.random.Next(); esto devuelve un int
+        {           
+            random = new Random(); 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="dni"></param>
+        /// <param name="nacionalidad"></param>
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad):base(id,nombre,apellido,dni,nacionalidad)
         {
+            this.clasesDelDia = new Queue<Universidad.EClases>();
             _ramdomClases();
-            //clasesDelDia.Enqueue((Universidad.EClases)_ramdomClases()));
-            // clasesDelDia.Enqueue(_ramdomClases()); RANDOM CLASES DEVULVE VOID Y ME TIRA ERROR
+            _ramdomClases();            
         }
+        #endregion
 
-        private  void _ramdomClases() // Donde va el static de ramdon?
+        #region Metodos
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void _ramdomClases() 
         {
-            this.clasesDelDia.Enqueue((Universidad.EClases)random.Next(clasesDelDia.Count+1));
+            this.clasesDelDia.Enqueue((Universidad.EClases)random.Next(4));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.ToString()); //Como muestro aca los datos del profesor?                       
-
+            sb.AppendLine(base.MostrarDatos()); 
+            sb.AppendLine(ParticiparEnClase());
+            
             return sb.ToString();
         }
 
-        public static Profesor operator !=(Universidad u, Universidad.EClases clase)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="clase"></param>
+        /// <returns></returns>
+        public static bool operator !=(Profesor u, Universidad.EClases clase)
         {
-            Profesor retorno = null;
-            foreach (Profesor lista in g.profesor)//Chan, es el mismo metodo de Universidad
-            {                                       // Como lo reutilizo?
-                if (!(lista == clase))
-                {
-                    retorno = lista;
-                }                
-            }
-            return retorno;
-
+            return (!(u == clase));
         }
 
-        public static bool operator ==(Profesor g, Universidad.EClases a)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="clase"></param>
+        /// <returns></returns>
+        public static bool operator ==(Profesor g, Universidad.EClases clase)
         {
             bool retorno = false;
 
             foreach(Universidad.EClases da in g.clasesDelDia)
             {
-                if (da == a)
+                if (da == clase)
                 {
                     retorno = true;
                 }
@@ -73,23 +101,29 @@ namespace ClasesInstanciables
             return retorno;
         }
 
-         
-
-
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected override string ParticiparEnClase()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("CLASES DEL DÍA: {0}\n", this.clasesDelDia);
+            sb.AppendLine("CLASES DEL DIA:");
+            foreach (Universidad.EClases clase in this.clasesDelDia)
+            {
+                sb.AppendFormat("{0}\r\n", clase);
+            }            
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return base.ToString();
+            return MostrarDatos();
         }
-
+        #endregion
     }
 }

@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 
 namespace Exepciones 
 {
-    public class DniInvalidoExeptionn : Exception //Dudas en esta clase
+    public class DniInvalidoExeptionn : Exception 
     {
-        public DniInvalidoExeptionn ()
+        private static string msj= "Dni con error de formato.";
+
+
+        public DniInvalidoExeptionn () :this(msj)
         {
 
         }
 
-        public DniInvalidoExeptionn(Exception e)
+        public DniInvalidoExeptionn(Exception e) : this(msj,e)
         {
 
         }
 
-        public DniInvalidoExeptionn(string mensaje)
+        public DniInvalidoExeptionn(string mensaje) :base(mensaje)
         {
             
         }
 
-        public DniInvalidoExeptionn(string mensaje, Exception e) : this("Dni con error de formato.")
+        public DniInvalidoExeptionn(string mensaje, Exception e) : base(mensaje, e)
         {
             
 

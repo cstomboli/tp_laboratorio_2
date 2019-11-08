@@ -36,7 +36,19 @@ namespace ClasesInstanciables
                 this.profesor = value;
             }
         }
-        public List<Jornada> Jornadas { get; set; }
+
+        public List<Jornada> Jornadas
+        {
+            get
+            {
+                return jornada;
+            }
+            set
+            {
+                this.jornada = value;
+            }
+        }
+
         public Jornada this[int i]
         {
             get
@@ -75,10 +87,14 @@ namespace ClasesInstanciables
 
         }
 
-        private string MostrarDatos(Universidad uni)
+        private static string MostrarDatos(Universidad uni)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.ToString());
+            foreach (Jornada esta in uni.Jornadas)
+            {
+                sb.AppendFormat("{0}\r\n", esta.ToString());
+                sb.AppendLine("<----------------------------------------->");
+            }            
             return sb.ToString();
         }
 
@@ -92,22 +108,31 @@ namespace ClasesInstanciables
         }
         public static Profesor operator !=(Universidad u, EClases clase)
         {
-            Profesor aux = null;
+            Profesor retorno = null;
 
-            if(!(u == clase))
+            foreach (Profesor lista in u.profesor)
             {
-
+                if ((lista != clase))
+                {
+                    retorno = lista;
+                    break;
+                }                
             }
-
-            return aux;
+            return retorno;
         }
 
         public static Universidad operator +(Universidad g, EClases clase)
-        {          
-            if (!(g==clase))
+        {
+            Profesor prof = (g == clase);
+            Jornada jornada = new Jornada(clase, prof);
+            foreach(Alumno este in g.Alumnos)
             {
-               // g.botella.Add(b);                               
+                if(este==clase)
+                {
+                    jornada.Alumnos.Add(este);
+                }
             }
+            g.jornada.Add(jornada);
             return g;
         }
 
@@ -115,7 +140,11 @@ namespace ClasesInstanciables
         {
             if (!(u==a))
             {
-               // u.Add();        Nunca se como agregar!                      
+                u.Alumnos.Add(a);                       
+            }
+            else
+            {
+                throw (new AlumnoRepetidoExeption());
             }
             return u;
         }
@@ -123,7 +152,7 @@ namespace ClasesInstanciables
         {
             if (!(u == i))
             {
-               // g.botella.Add(b);
+                u.Instructores.Add(i);
             }
             return u;
         }
@@ -132,7 +161,7 @@ namespace ClasesInstanciables
         {
             bool retorno = false;
 
-            foreach (Alumno alumno in g.Alumnos) // Aca tendria q ir lista de alumnos!
+            foreach (Alumno alumno in g.Alumnos) 
             {
                 if(alumno == a)
                 {
@@ -147,11 +176,12 @@ namespace ClasesInstanciables
         {
             bool retorno = false;
 
-            foreach(Profesor profesor in g.Instructores) //Lista de Instructores??
+            foreach(Profesor profesor in g.Instructores) 
             {
                 if(profesor==a)
                 {
                     retorno = true;
+                    break;
                 }
             }            
             return retorno;
@@ -160,11 +190,12 @@ namespace ClasesInstanciables
         public static Profesor operator ==(Universidad g, EClases clase)
         {
             Profesor retorno = null;
-            foreach (Profesor lista in g.profesor)//Chan
+            foreach (Profesor lista in g.profesor)
             {
-                if(lista==clase)
+                if((lista==clase))
                 {
                     retorno= lista;
+                    break;
                 }
                 else
                 {
@@ -176,7 +207,7 @@ namespace ClasesInstanciables
 
         public override string ToString()
         {
-            return base.ToString();
+            return MostrarDatos(this);
         }
 
         

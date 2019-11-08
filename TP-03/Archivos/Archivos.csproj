@@ -42,9 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericoInterfaz.cs" />
+    <Compile Include="IArchivo.cs" />
     <Compile Include="Texto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exepciones\Exepciones.csproj">
+      <Project>{aa43521b-e8b5-400b-b3a9-1f9c3f1ff142}</Project>
+      <Name>Exepciones</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
