@@ -19,8 +19,10 @@ namespace ClasesInstanciables
             Becado
         }
 
+        #region Metodos 
+
         /// <summary>
-        /// 
+        /// Constructor por defecto que llama a la base.
         /// </summary>
         public Alumno() :base()
         {
@@ -28,7 +30,8 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Inicializa la clase que toma y le pasa a la base los demas parametros
+        /// recibidos.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="nombre"></param>
@@ -42,7 +45,8 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Inicializa el estado de cuenta y le pasa al constructor de esta misma clase
+        /// los demas parametros recibidos.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="nombre"></param>
@@ -57,9 +61,9 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Sobreescribe el metodo Mostrar datos, para mostrar lo que declara.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Una cadena, con dicha informacion.</returns>
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -79,11 +83,12 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// El metodo compara si el Alumno es igual a la clase, 
+        /// si toma esa clase y no es Deudor.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="clase"></param>
-        /// <returns></returns>
+        /// <returns>True si la toma, false si no lo es. </returns>
         public static bool operator ==(Alumno a, Universidad.EClases clase)
         {
             bool retorno = false;
@@ -96,11 +101,12 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// El metodo compara si el Alumno es distinto a la clase, 
+        /// si no toma esa clase 
         /// </summary>
         /// <param name="a"></param>
         /// <param name="clase"></param>
-        /// <returns></returns>
+        /// <returns>True si es distinto, false si no lo es.</returns>
         public static bool operator !=(Alumno a, Universidad.EClases clase)
         {
             bool retorno = false;
@@ -113,23 +119,26 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Sobreescribe al metodo Participar En Clase, para mostrar la 
+        /// clase que el alumno tomaa.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Una cadena con dicha informacion.</returns>
         protected override string ParticiparEnClase ()
         {
             StringBuilder sb = new StringBuilder();            
-            sb.AppendFormat("TOMA CLASES DE: {0}\r\n", this.claseQueToma); //Si no lo tira, poner .ToString()
+            sb.AppendFormat("TOMA CLASES DE: {0}", this.claseQueToma); //Si no lo tira, poner .ToString()
             return sb.ToString();
         }
 
         /// <summary>
-        /// 
+        /// Sobreescribe al metodo ToString para Mostrar la cadena de Mostrar Datos.
+        /// Hace publicos los datos del Alumno.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Una cadena, con dicha informacion.</returns>
         public override string ToString()
         {    
             return MostrarDatos();
         }
+        #endregion
     }
 }

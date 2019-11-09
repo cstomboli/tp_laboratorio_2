@@ -98,7 +98,7 @@ namespace EntidadesAbstractas
         #region Métodos
 
         /// <summary>
-        /// 
+        /// Constructor por defecto.
         /// </summary>
         public Persona ()
         {
@@ -106,7 +106,7 @@ namespace EntidadesAbstractas
         }
 
         /// <summary>
-        /// 
+        /// Constructor de persona, Inicializa los parametros recibidos.
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -119,7 +119,8 @@ namespace EntidadesAbstractas
         }
 
         /// <summary>
-        /// 
+        /// Constructor de persona, Inicializa los parametros recibidos llamando a this.
+        /// y inicializa el dni.
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -131,7 +132,8 @@ namespace EntidadesAbstractas
         }
 
         /// <summary>
-        /// 
+        ///  Constructor de persona, Inicializa los parametros recibidos llamando a this.
+        /// y inicializa el dni.
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -143,9 +145,9 @@ namespace EntidadesAbstractas
         }
 
         /// <summary>
-        /// 
+        /// Muestra el Apellido, Nombre y Nacionalidad.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>La cadena a mostrar.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -155,11 +157,11 @@ namespace EntidadesAbstractas
         }
 
         /// <summary>
-        /// 
+        /// Valida que el Dni corresponda con la Nacionalidad ingresada.
         /// </summary>
         /// <param name="nacionalidad"></param>
         /// <param name="dato"></param>
-        /// <returns></returns>
+        /// <returns>El dato recibido.</returns>
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
              
@@ -173,16 +175,16 @@ namespace EntidadesAbstractas
             }
             else
             {
-                throw new NacionalidadInvalidaExeption();
+                throw new NacionalidadInvalidaException();
             }          
         }
 
         /// <summary>
-        /// 
+        /// Valida que no se ingresen letras, solo numeros.
         /// </summary>
         /// <param name="nacionalidad"></param>
         /// <param name="dato"></param>
-        /// <returns></returns>
+        /// <returns>El dato recibido.</returns>
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {        
             if(int.TryParse(dato, out int dni) &&  dato.Length <= 8) 
@@ -191,7 +193,7 @@ namespace EntidadesAbstractas
             }
             else
             {
-                throw new DniInvalidoExeptionn();
+                throw new DniInvalidoException();
             }                
         }
 
@@ -199,31 +201,18 @@ namespace EntidadesAbstractas
         /// 
         /// </summary>
         /// <param name="dato"></param>
-        /// <returns></returns>
+        /// <returns>El dato recibido.</returns>
         private string ValidarNombreApellido(string dato)
         {
             string retorno = string.Empty; //yo pondria null
 
             foreach(char letra in dato)
             {
-                if(char.IsLetter(letra))    // && (!char.IsWhiteSpace(letra))
+                if(char.IsLetter(letra)) // && (!char.IsWhiteSpace(letra))
                 {
                     retorno= dato;
                 }                
-            }
-            /*
-            int cantidad = dato.Length;
-            for (int i = 0; dato[i]  != '\0'; i++)
-            {
-                if ((dato[i] > 'Z' || dato[i] < 'A') && (dato[i] > 'z' || dato[i] < 'a') && dato[i] != ' ')
-                {
-                    //false
-                    //Console.WriteLine("Dato erroneo");
-                    dato = null;
-                }                
-            }
-            return dato;
-            */
+            }           
             return retorno;
         }
 

@@ -50,7 +50,7 @@ namespace ClasesInstanciables
         #region Metodos
 
         /// <summary>
-        /// 
+        /// Carga en la cola, de la clase del dia un numero randon menor del maximo indicado.
         /// </summary>
         private void _ramdomClases() 
         {
@@ -58,9 +58,9 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Sobreescribe el metodo.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Cadena con dicha informacion.</returns>
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -71,22 +71,23 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Compara si el profesor es distinto a la clase, es que no da 
+        /// dicha clase.
         /// </summary>
         /// <param name="u"></param>
         /// <param name="clase"></param>
-        /// <returns></returns>
+        /// <returns>True si no la da, false si la da.</returns>
         public static bool operator !=(Profesor u, Universidad.EClases clase)
         {
             return (!(u == clase));
         }
 
         /// <summary>
-        /// 
+        /// Compara si el profesor es igual a la clase, es que da esa clase.
         /// </summary>
         /// <param name="g"></param>
         /// <param name="clase"></param>
-        /// <returns></returns>
+        /// <returns>True si la da, false si no la da.</returns>
         public static bool operator ==(Profesor g, Universidad.EClases clase)
         {
             bool retorno = false;
@@ -102,22 +103,22 @@ namespace ClasesInstanciables
         }
 
         /// <summary>
-        /// 
+        /// Sobreescribe al metodo.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Cadena, con dicha informacion.</returns>
         protected override string ParticiparEnClase()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("CLASES DEL DIA:");
             foreach (Universidad.EClases clase in this.clasesDelDia)
             {
-                sb.AppendFormat("{0}\r\n", clase);
+                sb.AppendFormat("{0}\r\n", clase.ToString());
             }            
             return sb.ToString();
         }
 
         /// <summary>
-        /// 
+        /// Hace publicos los datos del profesor.
         /// </summary>
         /// <returns></returns>
         public override string ToString()

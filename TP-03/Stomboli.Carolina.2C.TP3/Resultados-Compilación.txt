@@ -1,0 +1,3 @@
+﻿1>------ Operación Compilar iniciada: proyecto: TesteUnitarios, configuración: Debug Any CPU ------
+1>  TesteUnitarios -> C:\Users\María del Carmen\Desktop\trabajando en el tp\tp_laboratorio_2\TP-03\TesteUnitarios\bin\Debug\TesteUnitarios.dll
+========== Compilar: 1 correctos, 0 incorrectos, 5 actualizados, 0 omitidos ==========
