@@ -10,6 +10,8 @@ namespace Archivos
 {
     public class Texto : IArchivo<string>
     {
+        #region Metodos
+
         /// <summary>
         /// Escribe una cadena en el archivo.
         /// </summary>
@@ -57,6 +59,8 @@ namespace Archivos
             }
             return retorno;
         }
+
+        #endregion
 
 
     }

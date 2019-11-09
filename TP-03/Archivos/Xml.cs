@@ -11,6 +11,8 @@ namespace Archivos
 {
     public class Xml <T> : IArchivo<T>
     {
+        #region Metodos
+
         /// <summary>
         /// Genera, guarda un archivo del tipo XML. Serealizando el objeto recibido 
         /// </summary>
@@ -68,6 +70,8 @@ namespace Archivos
             return retorno;
 
         }
+
+        #endregion
 
     }
 }
