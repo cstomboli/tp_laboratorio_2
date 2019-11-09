@@ -7,6 +7,7 @@ using EntidadesAbstractas;
 
 namespace ClasesInstanciables
 {
+    #pragma warning disable CS0660, CS0661
     public sealed class Alumno : Universitario
     {
         private Universidad.EClases claseQueToma;

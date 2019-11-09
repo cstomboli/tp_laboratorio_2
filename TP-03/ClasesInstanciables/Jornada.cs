@@ -7,6 +7,7 @@ using Archivos;
 
 namespace ClasesInstanciables
 {
+    #pragma warning disable CS0660, CS0661
     public class Jornada
     {
         private List<Alumno> alumnos;
