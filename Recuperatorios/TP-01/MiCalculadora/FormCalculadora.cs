@@ -61,7 +61,8 @@ namespace MiCalculadora
         }
 
         /// <summary>
-        /// El evento llama al metodo Operar, el cual realiza la operacion
+        /// El evento llama al metodo Operar, el cual realiza la operacion y escribe en 
+        /// el lebel el resultado.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -70,6 +71,9 @@ namespace MiCalculadora
             labelResultado.Text = Operar(txtNumero1.Text, txtNumero2.Text, operador.Text).ToString();
         }       
 
+        /// <summary>
+        /// El metodo vacia todo lo ingresado.
+        /// </summary>
         private void Limpiar()
         {
             txtNumero1.Text = string.Empty;
@@ -78,6 +82,14 @@ namespace MiCalculadora
             labelResultado.Text = string.Empty;
         }
 
+        /// <summary>
+        /// El metodo recibe los numeros en String y los convierte a Objetc para 
+        /// realizar la operacion, por medio de Calculadora.Operar.
+        /// </summary>
+        /// <param name="numero1">Primer numero a convertir.</param>
+        /// <param name="numero2">Segundo numero a convertir.</param>
+        /// <param name="operador">Operador para realizar la operacion.</param>
+        /// <returns></returns>
         private static double Operar(string numero1, string numero2, string operador)
         {
             Numero num1 = new Numero(numero1);
