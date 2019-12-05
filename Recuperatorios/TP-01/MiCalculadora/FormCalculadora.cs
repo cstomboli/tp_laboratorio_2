@@ -19,7 +19,7 @@ namespace MiCalculadora
         }
 
         /// <summary>
-        /// El metodo cierra el Form al apretar el boton cerrar.
+        /// El evento cierra el Form al apretar el boton cerrar.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -29,7 +29,7 @@ namespace MiCalculadora
         }
 
         /// <summary>
-        /// El metodo escribe en el lebel el numero decimal convertido a binario.
+        /// El evento escribe en el lebel el numero decimal convertido a binario.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -40,7 +40,7 @@ namespace MiCalculadora
         }
 
         /// <summary>
-        /// El metodo escribe en el lebel el numero binario convertido a decimal.
+        /// El evento escribe en el lebel el numero binario convertido a decimal.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -50,11 +50,21 @@ namespace MiCalculadora
             labelResultado.Text = numero.BinarioDecimal(labelResultado.Text);
         }
 
+        /// <summary>
+        /// El evento limpia todos los campos completados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
 
+        /// <summary>
+        /// El evento llama al metodo Operar, el cual realiza la operacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             labelResultado.Text = Operar(txtNumero1.Text, txtNumero2.Text, operador.Text).ToString();
@@ -75,7 +85,5 @@ namespace MiCalculadora
 
             return Calculadora.Operar(num1 , num2, operador);
         }
-
-       
     }
 }
