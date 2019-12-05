@@ -123,6 +123,7 @@
             this.labelResultado.Name = "labelResultado";
             this.labelResultado.Size = new System.Drawing.Size(0, 25);
             this.labelResultado.TabIndex = 3;
+            this.labelResultado.Text = "0";
             // 
             // FormCalculadora
             // 
