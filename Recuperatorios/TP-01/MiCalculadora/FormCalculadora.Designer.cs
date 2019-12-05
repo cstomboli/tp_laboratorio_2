@@ -119,11 +119,10 @@
             // labelResultado
             // 
             this.labelResultado.AutoSize = true;
-            this.labelResultado.Location = new System.Drawing.Point(545, 23);
+            this.labelResultado.Location = new System.Drawing.Point(482, 23);
             this.labelResultado.Name = "labelResultado";
-            this.labelResultado.Size = new System.Drawing.Size(53, 25);
+            this.labelResultado.Size = new System.Drawing.Size(0, 25);
             this.labelResultado.TabIndex = 3;
-            this.labelResultado.Text = "labe";
             // 
             // FormCalculadora
             // 

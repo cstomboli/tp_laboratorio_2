@@ -10,3 +10,15 @@ C:\Users\LENOVO X1carbon\source\repos\TP-01\MiCalculadora\obj\Debug\MiCalculador
 C:\Users\LENOVO X1carbon\source\repos\TP-01\MiCalculadora\bin\Debug\TP-01.dll
 C:\Users\LENOVO X1carbon\source\repos\TP-01\MiCalculadora\bin\Debug\TP-01.pdb
 C:\Users\LENOVO X1carbon\source\repos\TP-01\MiCalculadora\obj\Debug\MiCalculadora.csproj.CopyComplete
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\bin\Debug\MiCalculadora.exe.config
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\bin\Debug\MiCalculadora.exe
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\bin\Debug\MiCalculadora.pdb
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\bin\Debug\TP-01.dll
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\bin\Debug\TP-01.pdb
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.csprojAssemblyReference.cache
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.FormCalculadora.resources
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.Properties.Resources.resources
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.csproj.GenerateResource.cache
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.csproj.CopyComplete
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.exe
+C:\Users\LENOVO X1carbon\Desktop\tp_labo\tp_laboratorio_2\Recuperatorios\TP-01\MiCalculadora\obj\Debug\MiCalculadora.pdb
