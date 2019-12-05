@@ -1,0 +1,5 @@
+C:\Users\LENOVO X1carbon\source\repos\TP-01\TP-01\bin\Debug\TP-01.dll
+C:\Users\LENOVO X1carbon\source\repos\TP-01\TP-01\bin\Debug\TP-01.pdb
+C:\Users\LENOVO X1carbon\source\repos\TP-01\TP-01\obj\Debug\TP-01.csprojAssemblyReference.cache
+C:\Users\LENOVO X1carbon\source\repos\TP-01\TP-01\obj\Debug\TP-01.dll
+C:\Users\LENOVO X1carbon\source\repos\TP-01\TP-01\obj\Debug\TP-01.pdb
