@@ -13,7 +13,7 @@ namespace Entidades
 
         }
 
-        public TrackingIdRepetidoException(string mensaje, Exception inner):base(mensaje) //asi?
+        public TrackingIdRepetidoException(string mensaje, Exception inner):base(mensaje, inner)
         {
 
         }

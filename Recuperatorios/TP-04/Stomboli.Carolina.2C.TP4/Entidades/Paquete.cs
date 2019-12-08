@@ -9,6 +9,8 @@ namespace Entidades
 {
     public class Paquete : IMostrar<Paquete> 
     {
+        public delegate void DelegadoEstado(object sender, EventArgs estado);
+        public event DelegadoEstado InformarEstado;
         private string direccionEntrega;
         private EEstado estado;
         private string trackingID;
@@ -114,9 +116,5 @@ namespace Entidades
         {
             return MostrarDatos(this);
         }
-
-        public event DelegadoEstado InformarEstado;        
-
     }
-    public delegate void DelegadoEstado();
 }
