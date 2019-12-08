@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Entidades
 {
-    public class Paquete : IMostrar<T> //ver si va te o q
+    public class Paquete : IMostrar<Paquete> 
     {
         private string direccionEntrega;
         private EEstado estado;
@@ -20,18 +21,70 @@ namespace Entidades
         }
 
 
-        public string DireccionEntrega { get; set; }
-        public EEstado Estado { get; set; }
-        public string TrackingID { get; set; }
+        public string DireccionEntrega 
+        { 
+            get
+            {
+                return direccionEntrega;
+            }  
+            set
+            {
+                direccionEntrega = value;
+            }
+        }
+        public EEstado Estado 
+        { 
+            get
+            {
+                return estado;
+            }    
+            set
+            {
+                estado = value;
+            }
+        
+        }
+        public string TrackingID 
+        { 
+            get
+            {
+                return trackingID;
+            }
+            set
+            {
+                trackingID = value;
+            }
+        
+        }
 
         public void MockCicloDeVida()
         {
 
+            for(;(int)this.Estado<2; )
+            {
+                Thread.Sleep(4000);
+
+                if (this.Estado==EEstado.Ingresado)
+                {
+                    this.Estado = EEstado.EnViaje;
+                }
+                else if(this.Estado == EEstado.EnViaje)
+                {
+                    this.Estado = EEstado.Entregado;
+                }
+            }
         }
 
-        public string MostrarDatos(Mostrar<Paquete>elementos)
+        public string MostrarDatos(IMostrar<Paquete>elementos)
         {
+            string sb = string.Empty;
 
+            if(elementos is Paquete)
+            {
+                Paquete p = (Paquete)elementos;
+                 sb = string.Format("{0} para {1}", p.TrackingID , p.direccionEntrega);
+            }     
+            return sb;
         }
 
         public static bool operator !=(Paquete p1, Paquete p2)
@@ -43,8 +96,10 @@ namespace Entidades
         {
             bool retorno = false;
 
-            if (p1== p2) retorno = true;
-
+            if (p1.TrackingID == p2.TrackingID)
+            {
+                retorno = true;
+            }
             return retorno;
         }
 
@@ -52,11 +107,12 @@ namespace Entidades
         {
             this.direccionEntrega = direccionEntrega;
             this.TrackingID = trackingID;
+            this.estado = EEstado.Ingresado;
         }
 
         public override string ToString()
         {
-
+            return MostrarDatos(this);
         }
 
         public event DelegadoEstado InformarEstado;        

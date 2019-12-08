@@ -7,23 +7,27 @@ using System.Data.SqlClient;
 
 namespace Entidades
 {
-    public static class PaqueteDAO 
+    public static class PaqueteDAO //DESKTOP-U03MFFH
     {
         static SqlCommand comando;
         static SqlConnection conexion;
         
         public static bool Insertar (Paquete p)
         {
-            bool retorno =false;
+            conexion.Open();
+            StringBuilder cadena = new StringBuilder();
+           
+            cadena.AppendFormat("INSERT INTO Paquetes VALUES('{0}','{1}', 'Stomboli Carolina')", p.DireccionEntrega, p.TrackingID);
+            comando = new SqlCommand(cadena.ToString(), conexion);
+            comando.ExecuteNonQuery();
+            conexion.Close();
 
-
-            return retorno;
+            return true;
         }
 
         static PaqueteDAO()
         {
-
+            conexion = new SqlConnection(@"Data Source=DESKTOP-U03MFFH\SQLEXPRESS;Initial Catalog=correo-sp-2017;Integrated Security=True");
         }
-
     }
 }
