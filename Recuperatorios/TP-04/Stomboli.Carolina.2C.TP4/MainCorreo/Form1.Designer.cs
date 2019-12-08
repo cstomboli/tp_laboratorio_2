@@ -60,12 +60,11 @@
             this.lblEstadoIngresado.Size = new System.Drawing.Size(107, 25);
             this.lblEstadoIngresado.TabIndex = 0;
             this.lblEstadoIngresado.Text = "Ingresado";
-            this.lblEstadoIngresado.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblEstadoEnViaje
             // 
             this.lblEstadoEnViaje.AutoSize = true;
-            this.lblEstadoEnViaje.Location = new System.Drawing.Point(312, 40);
+            this.lblEstadoEnViaje.Location = new System.Drawing.Point(362, 40);
             this.lblEstadoEnViaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstadoEnViaje.Name = "lblEstadoEnViaje";
             this.lblEstadoEnViaje.Size = new System.Drawing.Size(92, 25);
@@ -75,7 +74,7 @@
             // lblEstadoEntregado
             // 
             this.lblEstadoEntregado.AutoSize = true;
-            this.lblEstadoEntregado.Location = new System.Drawing.Point(646, 40);
+            this.lblEstadoEntregado.Location = new System.Drawing.Point(762, 40);
             this.lblEstadoEntregado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstadoEntregado.Name = "lblEstadoEntregado";
             this.lblEstadoEntregado.Size = new System.Drawing.Size(111, 25);
@@ -94,7 +93,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(910, 331);
+            this.groupBox1.Size = new System.Drawing.Size(1137, 421);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estados Paquetes";
@@ -103,20 +102,21 @@
             // 
             this.lstEstadoEntregado.FormattingEnabled = true;
             this.lstEstadoEntregado.ItemHeight = 25;
-            this.lstEstadoEntregado.Location = new System.Drawing.Point(638, 92);
+            this.lstEstadoEntregado.Location = new System.Drawing.Point(767, 92);
             this.lstEstadoEntregado.Margin = new System.Windows.Forms.Padding(6);
             this.lstEstadoEntregado.Name = "lstEstadoEntregado";
-            this.lstEstadoEntregado.Size = new System.Drawing.Size(236, 179);
+            this.lstEstadoEntregado.Size = new System.Drawing.Size(360, 304);
             this.lstEstadoEntregado.TabIndex = 10;
+            this.lstEstadoEntregado.ContextMenuStripChanged += new System.EventHandler(this.mostrarToolStripMenuItem_Click);
             // 
             // lstEstadoEnViaje
             // 
             this.lstEstadoEnViaje.FormattingEnabled = true;
             this.lstEstadoEnViaje.ItemHeight = 25;
-            this.lstEstadoEnViaje.Location = new System.Drawing.Point(318, 92);
+            this.lstEstadoEnViaje.Location = new System.Drawing.Point(367, 92);
             this.lstEstadoEnViaje.Margin = new System.Windows.Forms.Padding(6);
             this.lstEstadoEnViaje.Name = "lstEstadoEnViaje";
-            this.lstEstadoEnViaje.Size = new System.Drawing.Size(236, 179);
+            this.lstEstadoEnViaje.Size = new System.Drawing.Size(388, 304);
             this.lstEstadoEnViaje.TabIndex = 9;
             // 
             // lstEstadoIngresado
@@ -126,7 +126,7 @@
             this.lstEstadoIngresado.Location = new System.Drawing.Point(12, 92);
             this.lstEstadoIngresado.Margin = new System.Windows.Forms.Padding(6);
             this.lstEstadoIngresado.Name = "lstEstadoIngresado";
-            this.lstEstadoIngresado.Size = new System.Drawing.Size(236, 179);
+            this.lstEstadoIngresado.Size = new System.Drawing.Size(343, 304);
             this.lstEstadoIngresado.TabIndex = 8;
             // 
             // groupBox2
@@ -137,7 +137,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnMostrar);
             this.groupBox2.Controls.Add(this.btnAgregar);
-            this.groupBox2.Location = new System.Drawing.Point(540, 383);
+            this.groupBox2.Location = new System.Drawing.Point(693, 458);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -168,7 +168,7 @@
             // 
             this.mtxtTrackingID.Location = new System.Drawing.Point(14, 79);
             this.mtxtTrackingID.Margin = new System.Windows.Forms.Padding(6);
-            this.mtxtTrackingID.Mask = "000:000:000";
+            this.mtxtTrackingID.Mask = "000-000-000";
             this.mtxtTrackingID.Name = "mtxtTrackingID";
             this.mtxtTrackingID.Size = new System.Drawing.Size(196, 31);
             this.mtxtTrackingID.TabIndex = 3;
@@ -211,21 +211,24 @@
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mostrarToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(173, 42);
+            this.contextMenuStrip.Size = new System.Drawing.Size(301, 86);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
             // mostrarToolStripMenuItem
             // 
             this.mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
-            this.mostrarToolStripMenuItem.Size = new System.Drawing.Size(300, 38);
+            this.mostrarToolStripMenuItem.Size = new System.Drawing.Size(172, 38);
             this.mostrarToolStripMenuItem.Text = "Mostrar";
             this.mostrarToolStripMenuItem.Click += new System.EventHandler(this.mostrarToolStripMenuItem_Click);
             // 
             // rtbMostrar
             // 
-            this.rtbMostrar.Location = new System.Drawing.Point(12, 396);
+            this.rtbMostrar.BackColor = System.Drawing.SystemColors.Menu;
+            this.rtbMostrar.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.rtbMostrar.Location = new System.Drawing.Point(12, 458);
             this.rtbMostrar.Margin = new System.Windows.Forms.Padding(6);
             this.rtbMostrar.Name = "rtbMostrar";
-            this.rtbMostrar.Size = new System.Drawing.Size(490, 181);
+            this.rtbMostrar.Size = new System.Drawing.Size(664, 224);
             this.rtbMostrar.TabIndex = 9;
             this.rtbMostrar.Text = "";
             // 
@@ -233,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 652);
+            this.ClientSize = new System.Drawing.Size(1162, 724);
             this.Controls.Add(this.rtbMostrar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -241,7 +244,6 @@
             this.Name = "Form1";
             this.Text = "Correo UTN por Carolina.Stomboli.2C";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

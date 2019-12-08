@@ -7,8 +7,10 @@ using System.Threading;
 
 namespace Entidades
 {
+    #pragma warning disable CS0660,CS0661
     public class Paquete : IMostrar<Paquete> 
     {
+
         public delegate void DelegadoEstado(object sender, EventArgs estado);
         public event DelegadoEstado InformarEstado;
         private string direccionEntrega;
@@ -60,22 +62,7 @@ namespace Entidades
         }
 
         public void MockCicloDeVida()
-        {
-
-            while(this.Estado != EEstado.Entregado)
-            {
-                Thread.Sleep(4000);
-
-                if (this.Estado == EEstado.Ingresado)
-                {
-                    this.Estado = EEstado.EnViaje;
-                }
-                else if (this.Estado == EEstado.EnViaje)
-                {
-                    this.Estado = EEstado.Entregado;
-                }
-            }
-            /*
+        {          
             for(;(int)this.Estado<2; )
             {
                 Thread.Sleep(4000);
@@ -88,28 +75,19 @@ namespace Entidades
                 {
                     this.Estado = EEstado.Entregado;
                 }
-            }*/
+                this.InformarEstado.Invoke(this.estado, EventArgs.Empty);
+            }
         }
 
         public string MostrarDatos(IMostrar<Paquete>elementos)
-        {
-            string retorno = "{0} para {1}";
-            if (elementos is Paquete)
-            {
-                Paquete paq = (Paquete)elementos;
-
-                string format = string.Format(retorno, paq.TrackingID, paq.DireccionEntrega);
-                retorno = format;
-            }
-            return retorno;
-            /*
+        {            
             string sb = string.Empty;
             if(elementos is Paquete)
             {
                 Paquete p = (Paquete)elementos;
                  sb = string.Format("{0} para {1}", p.TrackingID , p.direccionEntrega);
             }     
-            return sb;*/
+            return sb;
         }
 
         public static bool operator !=(Paquete p1, Paquete p2)

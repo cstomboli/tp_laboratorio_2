@@ -15,11 +15,21 @@ namespace Entidades
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("{0}\\{1}", path, archivo);
-            using (StreamWriter writer = new StreamWriter(sb.ToString(), File.Exists(archivo)))
+            StreamWriter writer = new StreamWriter(sb.ToString(), File.Exists(path +"\\"+ archivo));
+            
+            try
             {
-                writer.WriteLine(texto);
-                retorno = true;
+                using (writer)
+                {
+                    writer.WriteLine(texto);
+                    retorno = true;
+                }
             }
+            catch (Exception e)
+            {
+                throw new Exception("No se pudo guardar en la salida de texto.", e);
+            }
+
             return retorno;
         }
     }

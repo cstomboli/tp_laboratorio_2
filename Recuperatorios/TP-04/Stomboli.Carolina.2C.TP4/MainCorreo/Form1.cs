@@ -21,16 +21,6 @@ namespace MainCorreo
             this.correo = new Correo();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             Paquete p = new Paquete(txtDireccion.Text, mtxtTrackingID.Text);
@@ -39,12 +29,13 @@ namespace MainCorreo
             try
             {
                 correo += p;
+                ActualizarEstados();
             }
             catch (TrackingIdRepetidoException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show(error.Message, "Paquete repetido", MessageBoxButtons.OK,MessageBoxIcon.Question);
             }
-            ActualizarEstados();
+            
         }
 
         private void paq_InformaEstado(object sender, EventArgs e)
@@ -56,7 +47,8 @@ namespace MainCorreo
             }
             else
             {
-                ActualizarEstados();    ///mmmmmm
+
+                ActualizarEstados();  
             }
             
         }
@@ -73,18 +65,22 @@ namespace MainCorreo
             {
                 switch(lista.Estado)
                 {
-                    case Paquete.EEstado.Ingresado:
-                       /// lstEstadoIngresado.Text = lista.ToString(); //Version si esto funciona.
+                    case Paquete.EEstado.Ingresado:                       
                         lstEstadoIngresado.Items.Add(lista);
                         break;
                     case Paquete.EEstado.EnViaje:
-                        lstEstadoEnViaje.Items.Add(lista);
-                        //lstEstadoEnViaje.Text = lista.ToString();
+                        lstEstadoEnViaje.Items.Add(lista);                      
                         break;
                     case Paquete.EEstado.Entregado:
-                        lstEstadoEntregado.Items.Add(lista);
-                        //lstEstadoEntregado.Text = lista.ToString();
-                        PaqueteDAO.Insertar(lista);
+                        lstEstadoEntregado.Items.Add(lista);                       
+                        try
+                        {
+                            PaqueteDAO.Insertar(lista);
+                        }
+                        catch(Exception e)
+                        {
+                            MessageBox.Show(e.Message); 
+                        }
                         break;
                 }
             }
@@ -97,13 +93,19 @@ namespace MainCorreo
 
         private void MostrarInformacion<T>(IMostrar<T> elementos)
         {
-
             if (elementos != null)
             {
                 rtbMostrar.Clear();
                 rtbMostrar.Text = elementos.MostrarDatos(elementos);
-                rtbMostrar.Text.Guardar( "salida.txt");
-
+                
+                try
+                {
+                    rtbMostrar.Text.Guardar("salida.txt");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message); 
+                }             
             }
         }
 
@@ -115,6 +117,11 @@ namespace MainCorreo
         private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);
+        }
+
+        private void contextMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

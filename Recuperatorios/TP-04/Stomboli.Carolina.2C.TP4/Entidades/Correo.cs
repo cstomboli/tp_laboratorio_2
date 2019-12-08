@@ -42,80 +42,47 @@ namespace Entidades
         }
 
         public string MostrarDatos(IMostrar<List<Paquete>>elementos)
-        {
-            Correo correoLocal = (Correo)elementos;
-            string datosCompletos = "";
-            foreach (Paquete p in correoLocal.Paquete)
-            {
-                datosCompletos += string.Format("{0} para {1} ({2}) \n\r", p.TrackingID, p.DireccionEntrega, p.Estado.ToString());
-            }
-            return datosCompletos;
-
-            /*
+        {            
             string sb = string.Empty;
-
-            if (elementos is Paquete)
+            if (elementos is Correo)
             {
-                Paquete p = (Paquete)elementos;
-                sb = string.Format("{0} para {1}", p.TrackingID, p.DireccionEntrega, p.Estado.ToString());
+                Correo correo = (Correo)elementos;
+                foreach(Paquete p in correo.paquetes)
+                {
+                    sb += string.Format("{0} para {1} ({2})\n", p.TrackingID, p.DireccionEntrega, p.Estado.ToString());
+                }                
             }
-            return sb; */
+            return sb; 
         }
 
         public static Correo operator +(Correo c, Paquete p)
-        {
-            
-            foreach(Paquete enLista in c.paquetes)
+        {        
+            bool retorno = false;
+            if (!(c is null) && !(p is null))
             {
-                bool retorno = false;
-                if (!(c is null) && !(p is null))
+                foreach (Paquete paquete in c.paquetes)
                 {
-                    foreach (Paquete paq in c.paquetes)
+                    if (paquete == p)
                     {
-                        if (paq == p)
-                        {
-                            throw new TrackingIdRepetidoException("id repetido");
-                        }
-
-                    }
-                    if (!retorno)
-                    {
-                        c.Paquete.Add(p);
-                        try
-                        {
-                            Thread t = new Thread(p.MockCicloDeVida);
-                            t.Start();
-                            c.mockPaquetes.Add(t);
-                        }
-                        catch (Exception exception)
-                        {
-                            throw new Exception(exception.Message, exception);
-                        }
-
+                        throw new TrackingIdRepetidoException("EL TRACKING ID " + p.TrackingID + " ya figura en la lista de envios.");
                     }
                 }
-
-                    /*
-                    bool retorno = false;
-                    if(enLista== p)
+                if (!retorno)
+                {
+                    c.Paquete.Add(p);
+                    try
                     {
-                        throw new TrackingIdRepetidoException("Id repetido");
-                                                             ///mmmm Break??
+                        Thread hilo = new Thread(p.MockCicloDeVida);
+                        hilo.Start();
+                        c.mockPaquetes.Add(hilo);
                     }
-                    if (!(retorno))
+                    catch (Exception e)
                     {
-                        c.paquetes.Add(p);
-                        Thread t = new Thread(p.MockCicloDeVida);
-                        t.Start();
-                        c.mockPaquetes.Add(t);
-                        //break;     
+                        throw new Exception(e.Message, e);
                     }
                 }
-                return c;*/
-               
             }
-
-            return c;//dejar mas lindo
+            return c;
         }
 
     }
