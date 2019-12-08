@@ -34,6 +34,7 @@ namespace MainCorreo
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             Paquete p = new Paquete(txtDireccion.Text, mtxtTrackingID.Text);
+            
             p.InformarEstado += paq_InformaEstado;
             try
             {
@@ -62,23 +63,28 @@ namespace MainCorreo
         
         private void ActualizarEstados()
         {
-            lstEstadoEntregado.ResetText();
-            lstEstadoEnViaje.ResetText();
-            lstEstadoIngresado.ResetText(); //ver q onda el reset este
+            lstEstadoEntregado.Items.Clear();
+            lstEstadoEnViaje.Items.Clear();
+            lstEstadoIngresado.Items.Clear();
+            //lstEstadoEnViaje.ResetText();
+            //lstEstadoIngresado.ResetText(); //ver q onda el reset este
 
             foreach(Paquete lista in correo.Paquete)
             {
                 switch(lista.Estado)
                 {
                     case Paquete.EEstado.Ingresado:
-                        lstEstadoIngresado.Text = lista.ToString(); //Version si esto funciona.
-                        //lstEstadoIngresado.Items.Add(lista);
+                       /// lstEstadoIngresado.Text = lista.ToString(); //Version si esto funciona.
+                        lstEstadoIngresado.Items.Add(lista);
                         break;
                     case Paquete.EEstado.EnViaje:
-                        lstEstadoEnViaje.Text = lista.ToString();
+                        lstEstadoEnViaje.Items.Add(lista);
+                        //lstEstadoEnViaje.Text = lista.ToString();
                         break;
                     case Paquete.EEstado.Entregado:
-                        lstEstadoEntregado.Text = lista.ToString();
+                        lstEstadoEntregado.Items.Add(lista);
+                        //lstEstadoEntregado.Text = lista.ToString();
+                        PaqueteDAO.Insertar(lista);
                         break;
                 }
             }
@@ -86,7 +92,29 @@ namespace MainCorreo
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            correo.FinEntregas();
+        }
 
+        private void MostrarInformacion<T>(IMostrar<T> elementos)
+        {
+
+            if (elementos != null)
+            {
+                rtbMostrar.Clear();
+                rtbMostrar.Text = elementos.MostrarDatos(elementos);
+                rtbMostrar.Text.Guardar( "salida.txt");
+
+            }
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            this.MostrarInformacion<List<Paquete>>((IMostrar<List<Paquete>>)correo);
+        }
+
+        private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);
         }
     }
 }
