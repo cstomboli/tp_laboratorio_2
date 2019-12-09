@@ -58,9 +58,7 @@ namespace MainCorreo
             lstEstadoEntregado.Items.Clear();
             lstEstadoEnViaje.Items.Clear();
             lstEstadoIngresado.Items.Clear();
-            //lstEstadoEnViaje.ResetText();
-            //lstEstadoIngresado.ResetText(); //ver q onda el reset este
-
+            
             foreach(Paquete lista in correo.Paquete)
             {
                 switch(lista.Estado)

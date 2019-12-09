@@ -24,7 +24,7 @@ namespace Entidades
             Entregado
         }
 
-
+        #region "Propiedades"
         public string DireccionEntrega 
         { 
             get
@@ -45,8 +45,7 @@ namespace Entidades
             set
             {
                 estado = value;
-            }
-        
+            }        
         }
         public string TrackingID 
         { 
@@ -57,10 +56,15 @@ namespace Entidades
             set
             {
                 trackingID = value;
-            }
-        
+            }        
         }
+        #endregion
 
+        #region "Metodos"
+
+        /// <summary>
+        /// El metodo cambia el estado del paquete.
+        /// </summary>
         public void MockCicloDeVida()
         {          
             for(;(int)this.Estado<2; )
@@ -79,6 +83,12 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// El metodo implementa MostrarDatos de la interface,
+        /// para mostrar el tracking id y la direccion del paquete.
+        /// </summary>
+        /// <param name="elementos"></param>
+        /// <returns></returns>
         public string MostrarDatos(IMostrar<Paquete>elementos)
         {            
             string sb = string.Empty;
@@ -90,11 +100,25 @@ namespace Entidades
             return sb;
         }
 
+        /// <summary>
+        /// El metodo chequea si un paquete es distinto al otro,
+        /// reutilizando el metodo ==.
+        /// </summary>
+        /// <param name="p1">El primer paquete a comparar.</param>
+        /// <param name="p2">El segundo paquete a comparar.</param>
+        /// <returns>True si no son iguales, false si si.</returns>
         public static bool operator !=(Paquete p1, Paquete p2)
         {
             return !(p1 == p2);
         }
 
+        /// <summary>
+        /// El metodo chequea si un paquete es igual al otro,
+        /// si tienen el mismo tracking id.
+        /// </summary>
+        /// <param name="p1">El primer paquete a comparar.</param>
+        /// <param name="p2">El segundo paquete a comparar.</param>
+        /// <returns>True si son iguales, false si no.</returns>
         public static bool operator ==(Paquete p1, Paquete p2)
         {
             bool retorno = false;
@@ -106,6 +130,12 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        /// Constructor de Paquete. Carga la dirreccion de entrega
+        /// y el id con los parametros recibidos y estado como ingresado.
+        /// </summary>
+        /// <param name="direccionEntrega">La direccion a cargar.</param>
+        /// <param name="trackingID">El id a cargar.</param>
         public Paquete(string direccionEntrega, string trackingID)
         {
             this.direccionEntrega = direccionEntrega;
@@ -113,9 +143,17 @@ namespace Entidades
             this.estado = EEstado.Ingresado;
         }
 
+        /// <summary>
+        /// El metodo sobrecarga a ToString y llama
+        /// a MostrarDatos, para mostrar la informacion
+        /// de los paquetes.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return MostrarDatos(this);
         }
+
+        #endregion
     }
 }

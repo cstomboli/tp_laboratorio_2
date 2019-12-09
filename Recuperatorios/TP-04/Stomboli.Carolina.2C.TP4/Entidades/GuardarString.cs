@@ -9,6 +9,14 @@ namespace Entidades
 {
     public static class GuardarString
     {
+        #region "Metodo"
+        /// <summary>
+        /// El metodo guarda el texto que recibe en un archivo de texto 
+        /// que tambien recibe en el escritorio de la maquina.
+        /// </summary>
+        /// <param name="texto">El texto a guardar.</param>
+        /// <param name="archivo">El nombre del archivo donde guardar y su extension.</param>
+        /// <returns></returns>
         public static bool Guardar(this string texto, string archivo)
         {
             bool retorno = false;
@@ -32,5 +40,6 @@ namespace Entidades
 
             return retorno;
         }
+        #endregion
     }
 }

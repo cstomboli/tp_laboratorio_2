@@ -24,12 +24,20 @@ namespace Entidades
             }        
         }
 
+        /// <summary>
+        /// Constructor de Correo, instancia la Lista de Paquetes
+        /// y la lista de hilos de Paquetes.
+        /// </summary>
         public Correo()
         {
             this.paquetes = new List<Paquete>();
             this.mockPaquetes = new List<Thread>();
         }
 
+        #region "Metodos"
+        /// <summary>
+        /// El metodo cierra los hilos abiertos.
+        /// </summary>
         public void FinEntregas()
         {
             foreach(Thread hilos in mockPaquetes)
@@ -41,6 +49,12 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// El metodo primero chequea que recibe un correo y luego
+        /// muestra los datos del paquete.
+        /// </summary>
+        /// <param name="elementos"></param>
+        /// <returns></returns>
         public string MostrarDatos(IMostrar<List<Paquete>>elementos)
         {            
             string sb = string.Empty;
@@ -55,6 +69,13 @@ namespace Entidades
             return sb; 
         }
 
+        /// <summary>
+        /// El metodo agrega un paquete al correo, y si el TrackingId esta
+        /// repetido lanza la excepcion TrackingIdRepetidoException.
+        /// </summary>
+        /// <param name="c">El correo donde agregar.</param>
+        /// <param name="p">El paquete a agregar.</param>
+        /// <returns></returns>
         public static Correo operator +(Correo c, Paquete p)
         {        
             bool retorno = false;
@@ -84,6 +105,6 @@ namespace Entidades
             }
             return c;
         }
-
+        #endregion
     }
 }
