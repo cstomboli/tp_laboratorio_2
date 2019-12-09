@@ -23,7 +23,10 @@ namespace MainCorreo
         {
             InitializeComponent();
             this.correo = new Correo();
+            PaqueteDAO.InformarErrorCarga += ErrorPaqueteDao;
         }
+
+        #region "Metodos y Eventos"
 
         /// <summary>
         /// El evento del boton agregar,  utiliza a InformarEstado para ir modificando el estado del paquete en el tiempo,
@@ -38,6 +41,7 @@ namespace MainCorreo
             Paquete p = new Paquete(txtDireccion.Text, mtxtTrackingID.Text);
             
             p.InformarEstado += paq_InformaEstado;
+            
             try
             {
                 correo += p;
@@ -64,8 +68,27 @@ namespace MainCorreo
             }
             else
             {
-                ActualizarEstados();  
+                ActualizarEstados();
             }            
+        }
+
+        /// <summary>
+        /// El metodo crea un delegadopara controlar la excepcion de no poder guardar en
+        /// la base de datos de Sql.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ErrorPaqueteDao(string mensaje)
+        {
+            if (this.InvokeRequired)
+            {
+                DelegadoPaqueteDao d = new DelegadoPaqueteDao(ErrorPaqueteDao);                
+                this.Invoke(d, new object[] {mensaje});
+            }
+            else
+            {
+                MessageBox.Show("No se pudo guardar en la base de datos", "Paquete DAO", MessageBoxButtons.OK, MessageBoxIcon.Question);                
+            }
         }
 
         /// <summary>
@@ -151,5 +174,6 @@ namespace MainCorreo
         {
             this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);
         }
+        #endregion
     }
 }

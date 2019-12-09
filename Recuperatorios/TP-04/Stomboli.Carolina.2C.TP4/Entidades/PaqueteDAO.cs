@@ -7,10 +7,13 @@ using System.Data.SqlClient;
 
 namespace Entidades
 {
+    public delegate void DelegadoPaqueteDao(string mensaje); 
     public static class PaqueteDAO 
     {
         static SqlCommand comando;
         static SqlConnection conexion;
+        public static event DelegadoPaqueteDao InformarErrorCarga;      
+
 
         /// <summary>
         /// El metodo inserta el tracking id y la direccion del paquete
@@ -28,13 +31,19 @@ namespace Entidades
                 cadena.AppendFormat("INSERT INTO Paquetes VALUES('{0}','{1}', 'Stomboli Carolina')", p.DireccionEntrega, p.TrackingID);
                 comando = new SqlCommand(cadena.ToString(), conexion);
                 comando.ExecuteNonQuery();
-                conexion.Close();
+                
                 return true;
             }
             catch(Exception e)
             {
-                throw new Exception("No se pudo guardar en la base de datos",e);
-            }            
+                InformarErrorCarga.Invoke(e.Message);
+                return false;
+                
+            } 
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         /// <summary>
