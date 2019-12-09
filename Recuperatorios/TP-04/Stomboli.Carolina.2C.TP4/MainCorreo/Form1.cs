@@ -27,7 +27,8 @@ namespace MainCorreo
 
         /// <summary>
         /// El evento del boton agregar,  utiliza a InformarEstado para ir modificando el estado del paquete en el tiempo,
-        /// utiliza al + para agregar el paquete al correo, actualiza estado lo cambia de un estado a otro y si hay un
+        /// utiliza al + para agregar el paquete al correo, actualiza estado lo cambia de un estado a otro y al llamar al Insertar 
+        /// si se produce una excepcion la y muestra el mensaje correspondiente; tanto si hay un id repetido o no puede insertar.
         /// tracking id repetido captura la excepcion.
         /// </summary>
         /// <param name="sender"></param>
@@ -41,6 +42,7 @@ namespace MainCorreo
             {
                 correo += p;
                 ActualizarEstados();
+                PaqueteDAO.Insertar(p);
             }
             catch (TrackingIdRepetidoException error)
             {
@@ -67,9 +69,8 @@ namespace MainCorreo
         }
 
         /// <summary>
-        /// El metodo limpia el lst, cambia el paquetes de un estado a otro
-        /// y al llamar al Insertar si se produce una excepcion captura la
-        /// excepcion y muestra el mensaje correspondiente.
+        /// El metodo limpia el lst, cambia el paquetes de un estado a otro.
+        /// </summary>
         /// </summary>
         private void ActualizarEstados()
         {
@@ -88,16 +89,7 @@ namespace MainCorreo
                         lstEstadoEnViaje.Items.Add(lista);                      
                         break;
                     case Paquete.EEstado.Entregado:
-                        lstEstadoEntregado.Items.Add(lista); 
-                        
-                        try
-                        {
-                            PaqueteDAO.Insertar(lista);
-                        }
-                        catch(Exception e)
-                        {
-                            MessageBox.Show(e.Message); 
-                        }
+                        lstEstadoEntregado.Items.Add(lista);                         
                         break;
                 }
             }
