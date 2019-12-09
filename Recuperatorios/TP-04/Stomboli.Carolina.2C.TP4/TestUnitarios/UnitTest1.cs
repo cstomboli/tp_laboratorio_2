@@ -8,6 +8,10 @@ namespace TestUnitarios
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// El test unitario verifica que la lista de Paquetes del 
+        /// correo este instanciada.
+        /// </summary>
         [TestMethod]
         public void TestListaInstanciada()
         {
@@ -16,6 +20,10 @@ namespace TestUnitarios
             Assert.IsNotNull(correo.Paquete);
         }
 
+        /// <summary>
+        /// El test unitario verifica que no se puedan cargar dos
+        /// paquetes con el mismo tracking id.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(TrackingIdRepetidoException))]
         public void TestPaquetesId()
@@ -28,7 +36,5 @@ namespace TestUnitarios
             correo += paquete1;
             correo += paquete2;
         }
-
-
     }
 }

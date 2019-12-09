@@ -11,7 +11,13 @@ namespace Entidades
     {
         static SqlCommand comando;
         static SqlConnection conexion;
-        
+
+        /// <summary>
+        /// El metodo inserta el tracking id y la direccion del paquete
+        /// en Sql, controla y lanza si hay alguna excepcion.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static bool Insertar (Paquete p)
         {
             try
@@ -28,10 +34,12 @@ namespace Entidades
             catch(Exception e)
             {
                 throw new Exception("No se pudo guardar en la base de datos",e);
-            }
-            
+            }            
         }
 
+        /// <summary>
+        /// Constructor de PaqueteDAO, establece la conexion con Sql.
+        /// </summary>
         static PaqueteDAO()
         {
             conexion = new SqlConnection("server=DESKTOP-U03MFFH;database=correo-sp-2017;integrated security=true");           

@@ -10,7 +10,6 @@ namespace Entidades
     #pragma warning disable CS0660,CS0661
     public class Paquete : IMostrar<Paquete> 
     {
-
         public delegate void DelegadoEstado(object sender, EventArgs estado);
         public event DelegadoEstado InformarEstado;
         private string direccionEntrega;
@@ -63,7 +62,7 @@ namespace Entidades
         #region "Metodos"
 
         /// <summary>
-        /// El metodo cambia el estado del paquete.
+        /// El metodo cambia el estado del paquete cada 4 segundos.
         /// </summary>
         public void MockCicloDeVida()
         {          
@@ -95,7 +94,7 @@ namespace Entidades
             if(elementos is Paquete)
             {
                 Paquete p = (Paquete)elementos;
-                 sb = string.Format("{0} para {1}", p.TrackingID , p.direccionEntrega);
+                sb = string.Format("{0} para {1}", p.TrackingID , p.direccionEntrega);
             }     
             return sb;
         }
@@ -153,7 +152,6 @@ namespace Entidades
         {
             return MostrarDatos(this);
         }
-
         #endregion
     }
 }
